@@ -224,30 +224,29 @@
     </div>
 
     <div class="mt-4">
-     <script src="https://searchappletudevst.z8.web.core.windows.net/aiconcierge.js"></script>
-            <script>
-              window.onload = () => {
+     <!--Include below script in Head tag.-->
+            <link rel="stylesheet" href="https://phoenixpopupudevst.z8.web.core.windows.net/style.css" />
+            <script src="https://phoenixpopupudevst.z8.web.core.windows.net/aiconcierge.js"></script>
+              <script>
                 if (window.Assistant) {
-                  const assistant = new Assistant({
-                    target: "target-search-applet", // Use this id to render search applet
-                    brandId: "ff96da41-4a9e-4f48-96c1-2c3a7483cf6f", // Add brandId here
-                    sourceType: "PROPERTYSEARCHAPPLET", // Optional: Define source type if needed
-                    agencyAgentIds: [], // Add agency agent ids here
-                    borderRadius: "8px" // Set the border radius of search applet
+                  let assistant = new Assistant({
+                    target: "target-chat-id",
+                    apiKey: "ff96da41-4a9e-4f48-96c1-2c3a7483cf6f",
+                    productId: "random-id",
+                    chatBotType: "SalesConcierge",
+                    //listingId: "<listingId>"
                   });
-            
-                  assistant.init();
-            
-                  window.addEventListener("search-result", (e) => {
-                    console.log("Third-party received search result:", e.detail); // e.detail provides searched property result
-                  });
-                } else {
-                  console.error("window.Assistant is not defined");
+                   window.onload = function() {assistant.init();}
                 }
-              };
-            </script>
+                if (window.dispatcher) {
+                  dispatcher.on("bot-ready", (e) => {
+                    console.log(e.detail);
+                  });
+                }
+              </script>
     </div>
 
 </body>
 
 </html>
+
